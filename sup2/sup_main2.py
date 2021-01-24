@@ -16,14 +16,8 @@ def get_my_model_n():
     return model
  
 
-# get_model()
 model = get_my_model_n()
-# keras.utils.plot_model(model, to_file="model.png", show_shapes=True)
-# model.compile - is needed before fitting
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
-# model.fit - to train model
-# x_train = [(1, 10, 12)]
-
 model.fit(x_train_ready, y_train_ready, epochs=32)
 
 test = [

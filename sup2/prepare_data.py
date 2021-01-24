@@ -1,6 +1,5 @@
-import itertools
-
-# from testing_x_train_data import x_train2, y_train
+import random
+from generating_x_data import create_finite_amount_of_data
 
 def prepare_x_train_data(x_train):
     new_data = []
@@ -18,36 +17,95 @@ def prepare_y_train_data(y_train):
         new_data.append(propabilities)
     return new_data
 
+# prepare generating true data
+# stworzenie danych ktore sa prawdziwe
+# strategia, bierzemy dni najblizej poniedzialku
+# czyli y data to są jedynki i 54 zera
+x_full_data = create_finite_amount_of_data(8,19,[1,2,3,4,5],2, 6)
+x_full_data += create_finite_amount_of_data(8,19,[1,2,3,4,5],1, 4)
+print(len(x_full_data))
+# uzupelnienie x daty do pelnych 55 trojek
+for x_data in x_full_data:
+    for i in range(len(x_data), 55):
+        x_data.append([0,0,0])
 
-# x_train_ready = prepare_x_train_data(x_train2)
-# y_train_ready = prepare_y_train_data(y_train)
+# dividing x_full_data on training data and test data
+# 80% to training and 20% to test
+x_training_data = list()
+x_test_data = list()
+for data in x_full_data:
+    if random.random() > 0.2:
+        x_training_data.append(data)
+    else:
+        x_test_data.append(data)
 
-def create_all_available_hours(min_hour, max_hour, days, how_long):
-    available_data = []
-    for d in days:
-        for h in range(min_hour, max_hour, how_long):
-            available_data.append([d, h, h + how_long])
-    return available_data
+print(len(x_training_data) / len(x_full_data))
+print(len(x_test_data) / len(x_full_data))
 
-def create_finite_amount_of_data(min_hour, max_hour, days, how_long):
-    all_data = []
-    available_data = create_all_available_hours(min_hour, max_hour, days, how_long)
-    for i in range(1, len(available_data) + 1):
-        print("iteration: " + str(i))
-        data_from_iteration = list(itertools.combinations(available_data, i))
-        # print(data_from_iteration)
-        all_data += data_from_iteration
-    return all_data
+y_train = []
+for index in range(len(x_training_data)):
+    y_train.append([1])
+for propabilities in y_train:
+    for index in range(len(propabilities), 55):
+        propabilities.append(0)
 
-l = create_finite_amount_of_data(8,19,[1,2,3,4,5],2)
-print(len(l))
-# for d in l:
-#     print("zestaw")
-#     print(d)
+y_test = []
+for index in range(len(x_training_data)):
+    y_test.append([1])
+for propabilities in y_test:
+    for index in range(len(propabilities), 55):
+        propabilities.append(0)
 
-with open('dataX2.txt', 'a') as the_file:
-    for d in l:
-        # print("zestaw")
-        # print(d)
-        the_file.write(str(d))
-        the_file.write("\n")
+
+import keras
+from keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Reshape
+from keras.layers import Input, Concatenate, Activation, LSTM
+from keras.models import Model
+
+
+def get_my_model_n():
+    model = keras.models.Sequential()
+    model.add(Flatten(input_shape=(55,3)))
+    model.add(Dense(165, activation='relu'))
+    model.add(Dense(165, activation='relu'))
+    model.add(Dense(55, activation='softmax'))
+    model.summary()
+    return model
+ 
+
+model = get_my_model_n()
+model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+# okazuje ze trzeba pomieszac...
+# jak?
+from helpers import swap_positions 
+for index in range(len(x_training_data)):
+    new_index = index % 55
+    swap_positions(x_training_data[index], 0, new_index)
+    swap_positions(y_train[index], 0, new_index)
+model.fit(x_training_data, y_train, epochs=6)
+
+# easy test - my
+test = [
+    [
+        [3.0, 10.0, 12.0, ],
+        [2.0, 11.0, 13.0, ],
+    ]
+]
+test = prepare_x_train_data(test)
+out = model.predict(test)
+print("outy")
+print(out)
+print(max(out[0]))
+print(out[0][0])
+print(out[0][1])
+print(max(out[0]) == out[0][1])
+# bigger test
+y_test = []
+for i in range(len(x_test_data)):
+    y_test.append([1])
+y_test = prepare_y_train_data(y_test)
+score = model.evaluate(x_test_data, y_test, verbose=2)
+print(score)
+if (max(out[0]) == out[0][1]):
+    print("model will be saved")
+    model.save("model1.h5")

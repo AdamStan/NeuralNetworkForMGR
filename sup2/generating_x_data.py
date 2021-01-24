@@ -2,9 +2,6 @@ import itertools
 import random
 
 
-
-
-
 def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []
     for d in days:
@@ -23,14 +20,16 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
         print("iteration: " + str(i))
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
-        all_data += data_from_iteration
+        for tup_data in data_from_iteration:
+            all_data.append(list(tup_data))
         data_from_iteration = None
     # small posibilities
     for i in range(2,max_depth):
         print("iteration: " + str(i))
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
-        all_data += data_from_iteration
+        for tup_data in data_from_iteration:
+            all_data.append(list(tup_data))
         data_from_iteration = None
     return all_data
 
