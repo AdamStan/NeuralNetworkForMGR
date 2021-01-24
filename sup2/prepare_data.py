@@ -1,5 +1,5 @@
 import random
-from generating_x_data import create_finite_amount_of_data
+from generating_x_data import create_finite_amount_of_data, create_finite_amount_from_mid
 
 def prepare_x_train_data(x_train):
     new_data = []
@@ -31,15 +31,23 @@ for x_data in x_full_data:
 
 # dividing x_full_data on training data and test data
 # 80% to training and 20% to test
-x_training_data = list()
-x_test_data = list()
-for data in x_full_data:
-    if random.random() > 0.2:
-        x_training_data.append(data)
-    else:
-        x_test_data.append(data)
+x_training_data = x_full_data
+x_test_data = create_finite_amount_from_mid(8,19,[1,2,3,4,5],2, 5)
+x_test_data += create_finite_amount_from_mid(8,19,[1,2,3,4,5],1, 4)
 
-print(len(x_training_data) / len(x_full_data))
+for x_data in x_test_data:
+    for i in range(len(x_data), 55):
+        x_data.append([0,0,0])
+
+
+# for data in x_full_data:
+#     if random.random() > 0.2:
+#         x_training_data.append(data)
+#     else:
+#         x_test_data.append(data)
+
+# print(len(x_training_data) / len(x_full_data))
+print("x_test_data")
 print(len(x_test_data) / len(x_full_data))
 
 y_train = []
@@ -62,26 +70,20 @@ from keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Reshape
 from keras.layers import Input, Concatenate, Activation, LSTM
 from keras.models import Model
 
-
-def get_my_model_n():
-    model = keras.models.Sequential()
-    model.add(Flatten(input_shape=(55,3)))
-    model.add(Dense(165, activation='relu'))
-    model.add(Dense(165, activation='relu'))
-    model.add(Dense(55, activation='softmax'))
-    model.summary()
-    return model
+from model import get_my_model_n
  
 
 model = get_my_model_n()
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 # okazuje ze trzeba pomieszac...
 # jak?
+print("mixing data")
 from helpers import swap_positions 
 for index in range(len(x_training_data)):
     new_index = index % 55
     swap_positions(x_training_data[index], 0, new_index)
     swap_positions(y_train[index], 0, new_index)
+print("mixing finish")
 model.fit(x_training_data, y_train, epochs=6)
 
 # easy test - my
@@ -108,4 +110,4 @@ score = model.evaluate(x_test_data, y_test, verbose=2)
 print(score)
 if (max(out[0]) == out[0][1]):
     print("model will be saved")
-    model.save("model1.h5")
+    model.save("model2.h5")

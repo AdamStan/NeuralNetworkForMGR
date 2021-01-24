@@ -33,6 +33,17 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
         data_from_iteration = None
     return all_data
 
+def create_finite_amount_from_mid(min_hour, max_hour, days, how_long, it):
+    all_data = []
+    available_data = create_all_available_hours(min_hour, max_hour, days, how_long)
+    print("iteration: " + str(it))
+    data_from_iteration = list(itertools.combinations(available_data, it))
+    print(len(data_from_iteration))
+    for tup_data in data_from_iteration:
+        all_data.append(list(tup_data))
+    return all_data
+    
+
 def create_for_2_hour(max_depth = 7):
     av2 = create_finite_amount_of_data(8,19,[1,2,3,4,5],2, max_depth)
 
