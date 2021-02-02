@@ -10,15 +10,12 @@ def get_model():
     # units is for output space
     model_lstm.add(LSTM(units=55, return_sequences=True, input_shape=(55,3)))
     # to avoid over train our network we have to turn off 20% our neurons 
-    model_lstm.add(Dropout(0.2))
+    # model_lstm.add(Dropout(0.2))
     
-    model_lstm.add(LSTM(units=55, return_sequences=True))
-    model_lstm.add(Dropout(0.2))
-    
-    model_lstm.add(LSTM(units=55))
-    model_lstm.add(Dropout(0.2))
+    model_lstm.add(LSTM(units=55, return_sequences=True, input_shape=(55,3)))
+    model_lstm.add(LSTM(units=55, return_sequences=True), input_shape=(55,3))
 
-    model_lstm.add(Dense(units=55))
+    model_lstm.add(Dense(units=55, activation='softmax'))
 
     model_lstm.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy']) # binary_crossentropy or mean_squared_error?
     model_lstm.summary()

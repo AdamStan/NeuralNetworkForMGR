@@ -1,3 +1,4 @@
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 def prepare_x_train_data(x_train):
     new_data = []
@@ -8,9 +9,4 @@ def prepare_x_train_data(x_train):
     return new_data
 
 def prepare_y_train_data(y_train):
-    new_data = []
-    for propabilities in y_train:
-        for index in range(len(propabilities), 55):
-            propabilities.append(0)
-        new_data.append(propabilities)
-    return new_data
+    return pad_sequences(sequences=y_train, maxlen=55)
