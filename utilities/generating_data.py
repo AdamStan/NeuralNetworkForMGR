@@ -3,7 +3,7 @@ import itertools
 def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []
     for d in days:
-        for h in range(min_hour, max_hour):
+        for h in range(min_hour, max_hour, how_long):
             available_data.append([d, h, h + how_long])
     return available_data
 

@@ -1,9 +1,3 @@
-import keras
-from keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Reshape
-from keras.layers import Input, Concatenate, Activation, LSTM
-from keras.models import Model
-import numpy as np
-
 from prepare_data import prepare_y_train_data, prepare_x_train_data
 from generating_x_data import create_finite_amount_of_data, create_finite_amount_from_mid
 from model import get_my_model_n
@@ -14,8 +8,8 @@ from model import get_my_model_n
 # stworzenie danych ktore sa prawdziwe
 # strategia, bierzemy dni najblizej poniedzialku
 # czyli y data to są jedynki i 54 zera
-x_full_data = create_finite_amount_of_data(8, 19, [1,2,3,4,5], 2, 5)
-x_full_data += create_finite_amount_of_data(8, 19, [1,2,3,4,5], 1, 5)
+x_full_data = create_finite_amount_of_data(8, 19, [1,2,3,4,5], 2, 6)
+x_full_data += create_finite_amount_of_data(8, 19, [1,2,3,4,5], 1, 4)
 print(len(x_full_data))
 # uzupelnienie x daty do pelnych 55 trojek
 x_full_data = prepare_x_train_data(x_full_data)
@@ -23,7 +17,7 @@ x_full_data = prepare_x_train_data(x_full_data)
 
 x_training_data = x_full_data
 x_test_data = create_finite_amount_from_mid(8,19,[1,2,3,4,5],2, 5)
-x_test_data += create_finite_amount_from_mid(8,19,[1,2,3,4,5],1, 5)
+x_test_data += create_finite_amount_from_mid(8,19,[1,2,3,4,5],1, 4)
 
 x_test_data = prepare_x_train_data(x_test_data)
 
@@ -37,8 +31,6 @@ for index in range(len(x_training_data)):
     y_test.append([1])
 y_test = prepare_y_train_data(y_test)
 
-model = get_my_model_n()
-model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 # okazuje ze trzeba pomieszac...
 # jak?
 print("mixing data")
@@ -52,7 +44,10 @@ print("X training data")
 print(len(x_training_data))
 print("x_test_data")
 print(len(x_test_data) / len(x_full_data))
-model.fit(x_training_data, y_train, epochs=12, batch_size=12)
+
+model = get_my_model_n()
+model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+model.fit(x_training_data, y_train, epochs=6, batch_size=32)
 
 # easy test - my
 test = [
