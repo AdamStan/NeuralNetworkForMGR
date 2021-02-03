@@ -5,51 +5,10 @@ from keras.models import Model
 from model import get_advance_model
 
 import random
-from generating_data import create_finite_amount_of_data, create_finite_amount_from_mid
-
-
-# x_full_data = create_finite_amount_of_data(8,19,[1,2,3,4,5],2, 4)
-# x_full_data += create_finite_amount_of_data(8,19,[1,2,3,4,5],1, 4)
-# print(len(x_full_data))
-# # uzupelnienie x daty do pelnych 55 trojek
-# for x_data in x_full_data:
-#     for i in range(len(x_data), 55):
-#         x_data.append([0,0,0])
-
-# # dividing x_full_data on training data and test data
-# # 80% to training and 20% to test
-# x_training_data = x_full_data
-# x_test_data = create_finite_amount_from_mid(8,19,[1,2,3,4,5],2, 4)
-# x_test_data += create_finite_amount_from_mid(8,19,[1,2,3,4,5],1, 4)
-
-# for x_data in x_test_data:
-#     for i in range(len(x_data), 55):
-#         x_data.append([0,0,0])
-
-
-# print("x_test_data")
-# print(len(x_test_data) / len(x_full_data))
-
-# y_train = []
-# for index in range(len(x_training_data)):
-#     y_train.append([1])
-# for propabilities in y_train:
-#     for index in range(len(propabilities), 55):
-#         propabilities.append(0)
-
-# y_test = []
-# for index in range(len(x_training_data)):
-#     y_test.append([1])
-# for propabilities in y_test:
-#     for index in range(len(propabilities), 55):
-#         propabilities.append(0)
-
-
-import keras
-from keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Reshape
-from keras.layers import Input, Concatenate, Activation, LSTM
+from ..utilities.generating_data import create_finite_amount_of_data, create_finite_amount_from_mid
 
 my_model = get_advance_model() 
+my_model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 # okazuje ze trzeba pomieszac...
 # jak?
 # print("mixing data")

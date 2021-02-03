@@ -1,5 +1,4 @@
 import itertools
-import random
 
 def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []

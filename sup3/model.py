@@ -1,6 +1,5 @@
-import keras
-from keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Reshape
-from keras.layers import Input, Activation, concatenate
+from keras.layers import Dense
+from keras.layers import Input, concatenate
 from keras.models import Model, Sequential
 
 
@@ -33,21 +32,3 @@ def get_advance_model():
 
     model.summary()
     return model
-
-
-def get_model():
-    first = Sequential()
-    first.add(Dense(1, input_shape=(2,), activation='sigmoid'))
-    second = Sequential()
-    second.add(Dense(1, input_shape=(1,), activation='sigmoid'))
-    third = Sequential()
-    # of course you must provide the input to result which will be your x3
-    third.add(Dense(1, input_shape=(1,), activation='sigmoid'))
-    # lets say you add a few more layers to first and second.
-    # concatenate them
-    merged = Concatenate([first, second])
-    # then concatenate the two outputs
-    result = Concatenate([merged,  third])
-    ada_grad = Adagrad(lr=0.1, epsilon=1e-08, decay=0.0)
-    result.compile(optimizer=ada_grad, loss='binary_crossentropy',
-                metrics=['accuracy'])

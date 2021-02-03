@@ -18,15 +18,12 @@ for i in range(60, 1258):
 X_train, Y_train = np.array(X_train), np.array(Y_train)
 
 X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
-print(X_train.shape)
-print(X_train.shape[1])
-print(Y_train.shape)
 
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
 
 regression = Sequential()
-
+print((X_train.shape[1], 1))
 regression.add(LSTM(units=50, return_sequences=True, input_shape= (X_train.shape[1], 1)))
 regression.add(Dropout(0.2))
 
@@ -41,5 +38,8 @@ regression.add(Dense(1))
 regression.compile(optimizer='adam', loss='mean_squared_error')
 regression.summary()
 
-regression.fit(X_train, Y_train, epochs=10)
-print(regression.evaluate(X_train, Y_train))
+print(X_train.shape)
+print(X_train.shape[1])
+print(Y_train.shape)
+
+regression.fit(X_train, Y_train, epochs=10, batch_size=1)
