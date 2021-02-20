@@ -1,3 +1,4 @@
+import keras
 from keras.layers import Dense
 from keras.layers import Input, concatenate
 from keras.models import Model, Sequential
@@ -31,4 +32,5 @@ def get_advance_model():
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
     model.summary()
+    keras.utils.plot_model(model, to_file="model.png", show_shapes=True)
     return model

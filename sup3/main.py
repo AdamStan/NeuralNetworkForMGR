@@ -28,6 +28,7 @@ x_learn3 = [
 
 
 x_learn = prepare_x_train_data(x_learn)
+print(x_learn)
 x_learn2 = prepare_x_train_data(x_learn2)
 x_learn3 = prepare_x_train_data(x_learn3)
 y_learn = [

@@ -12,21 +12,25 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
     available_data = create_all_available_hours(min_hour, max_hour, days, how_long)
     max_iteration = len(available_data) - max_depth
     print("Max iteration: " + str(max_iteration))
-    # big posibilities
+    # big possibilities
     for i in range(len(available_data), max_iteration, -1):
         print("iteration:" + str(i))
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
         for tup_data in data_from_iteration:
-            all_data.append(list(tup_data))
+            all_data.append(tup_data[0])
+            all_data.append(tup_data[1])
+            all_data.append(tup_data[2])
         data_from_iteration = None
-    # small posibilities
+    # small possibilities
     for i in range(2,max_depth):
         print("iteration: " + str(i))
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
         for tup_data in data_from_iteration:
-            all_data.append(list(tup_data))
+            all_data.append(tup_data[0])
+            all_data.append(tup_data[1])
+            all_data.append(tup_data[2])
         data_from_iteration = None
     return all_data
 
@@ -37,7 +41,9 @@ def create_finite_amount_from_mid(min_hour, max_hour, days, how_long, it):
     data_from_iteration = list(itertools.combinations(available_data, it))
     print(len(data_from_iteration))
     for tup_data in data_from_iteration:
-        all_data.append(list(tup_data))
+        all_data.append(tup_data[0])
+        all_data.append(tup_data[1])
+        all_data.append(tup_data[2])
     return all_data
 
 def create_for_2_hour(max_depth = 5):

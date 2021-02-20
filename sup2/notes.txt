@@ -1,0 +1,24 @@
+Wykonane zostalo poszukiwanie najlepszych parametrow dla sieci sekwencyjnej
+wzdloz dla 165, 330 i 495
+liczba warstw ukrytych 2, 3 ,4, 5
+Wyniki:
+[[2, 1, [0.0005471921758726239, 0.9816858768463135], <tensorflow.python.keras.callbacks.History object at 0x000001DB576792B0>],
+[2, 2, [1.969858431039029e-06, 0.9999731183052063], <tensorflow.python.keras.callbacks.History object at 0x000001DB58264278>],
+[2, 3, [2.317949565622257e-06, 1.0], <tensorflow.python.keras.callbacks.History object at 0x000001DB58388240>],
+[3, 1, [1.200327187689254e-05, 0.9995967149734497], <tensorflow.python.keras.callbacks.History object at 0x000001DB83128470>],
+[3, 2, [0.000338955462211743, 0.988927960395813], <tensorflow.python.keras.callbacks.History object at 0x000001DB57D40390>],
+[3, 3, [0.00010174558701692149, 0.996366560459137], <tensorflow.python.keras.callbacks.History object at 0x000001DB58CD90F0>],
+[4, 1, [6.0435191699070856e-05, 0.9979588985443115], <tensorflow.python.keras.callbacks.History object at 0x000001DB58E5A240>],
+[4, 2, [0.00039388335426338017, 0.98811936378479], <tensorflow.python.keras.callbacks.History object at 0x000001DB83E2CBE0>],
+[4, 3, [0.0363701768219471, 0.0], <tensorflow.python.keras.callbacks.History object at 0x000001DB59144400>],
+[5, 1, [0.0005175818805582821, 0.9799570441246033], <tensorflow.python.keras.callbacks.History object at 0x000001DB592B6780>],
+[5, 2, [0.0024745804257690907, 0.9190092086791992], <tensorflow.python.keras.callbacks.History object at 0x000001DB5947F160>],
+[5, 3, [1.5071782399900258e-05, 0.9993878602981567], <tensorflow.python.keras.callbacks.History object at 0x000001DB596002E8>]]
+Najlepszym modelem okazał sie:
+
+Disclaimer:
+Niestety to nie jest tak, że taki wyniki moze byc w 100% rzetelny.
+Na to sklada sie kilka czynnikow.
+Wynik jest najlepszy dla tych danych uczacych, testujacych oraz dla... tego czasu
+gdyz siec zaczyna z wagami wygenerowanymi losowoo.
+Moglo sie zdarzyc tak, ze model ktory okazal sie najlepszy mial najwiecej szczescia do wag poczatkowych
