@@ -36,3 +36,11 @@ D
 sup3/main.py,9\8\981e53f4198e6772998cf38df3e1d42bf9e39019
 <
 sup2/main.py,3\2\329f60607c6d77c2d12bf546634e2f045f97d03f
+=
+sup4/model.py,a\5\a5d6df1254f330c80f32d809daec925d16d6b26d
+<
+sup4/main.py,2\b\2be06f6cc564a2389068cbeea083c885397bf187
+s
+Cvenv/Lib/site-packages/tensorflow/python/keras/layers/embeddings.py,6\4\64e9ae0d6a0d9391aadf072aadf58e85a495187d
+A
+sup4/new_model.py,5\c\5c826c9cb0507a1795fa044f7ce950509486e61d

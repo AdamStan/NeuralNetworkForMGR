@@ -1,8 +1,8 @@
-from new_model import get_model
+from model import get_diff_model
 import numpy as np
 from prepare_data import prepare_x_train_data, prepare_y_train_data
 
-my_model = get_model()
+my_model = get_diff_model()
 my_model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 x_learn = [
     np.array([

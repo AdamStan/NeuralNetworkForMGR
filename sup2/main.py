@@ -74,4 +74,4 @@ print("Score mój")
 print(score)
 if (max(out[0]) == out[0][1]):
     print("model will be saved")
-    model.save("model4.h5")
+    model.save("model5.h5")

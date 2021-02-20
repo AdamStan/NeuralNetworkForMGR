@@ -23,11 +23,11 @@ def get_advance_model():
     branch_teacher.add(Dense(55 * 3 * 2, activation='relu'))
     branch_teacher.add(Dense(55, activation="softmax"))
     
-    combinded_first = concatenate([branch_plan.output, branch_teacher.output,])
-    combinded_second = concatenate([combinded_first, branch_room.output])
-    output = Dense(55, activation='softmax')(combinded_second)
+    combined_first = concatenate([branch_plan.output, branch_teacher.output,])
+    combined_second = concatenate([combined_first, branch_room.output])
+    output = Dense(55, activation='softmax')(combined_second)
 
-    model = Model(inputs=[input_plan, input_teacher, input_room], outputs = output)
+    model = Model(inputs=[input_plan, input_teacher, input_room], outputs=output)
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
     model.summary()
