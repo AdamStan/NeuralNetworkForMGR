@@ -1,18 +1,12 @@
 
-Mpython:S1066‰"/Merge this if statement with the enclosing one.(•øù™ÿÿÿÿÿ
-Gpython:S1066›"/Merge this if statement with the enclosing one.(š¼€
+ipython:S107Ÿ"RMethod "fit_generator" has 14 parameters, which is greater than the 13 authorized.(¦¶—n
 rpython:S3776Ç"TRefactor this function to reduce its Cognitive Complexity from 33 to the 15 allowed.(Ö˜¹şÿÿÿÿ
-gpython:S107Á"JMethod "compile" has 9 parameters, which is greater than the 7 authorized.(ü¾ä—ÿÿÿÿÿ
-dpython:S107¶"GMethod "fit" has 20 parameters, which is greater than the 7 authorized.(…¾½’ûÿÿÿÿ
-rpython:S3776¶"TRefactor this function to reduce its Cognitive Complexity from 25 to the 15 allowed.(…¾½’ûÿÿÿÿ
-ipython:S107â	"LMethod "evaluate" has 12 parameters, which is greater than the 7 authorized.(­Øåùÿÿÿÿ
-rpython:S3776â	"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(­Øåùÿÿÿÿ
-gpython:S107Ş"JMethod "predict" has 9 parameters, which is greater than the 7 authorized.(üí°œÿÿÿÿÿ
-rpython:S3776Ş"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(üí°œÿÿÿÿÿ
-hpython:S107Ÿ"QMethod "fit_generator" has 15 parameters, which is greater than the 7 authorized.(¦¶—n
-mpython:S107Ç"UMethod "evaluate_generator" has 8 parameters, which is greater than the 7 authorized.(Í»„
-lpython:S107ã"TMethod "predict_generator" has 8 parameters, which is greater than the 7 authorized.(Ï›ÈŸ
-dpython:S107"GMethod "save" has 8 parameters, which is greater than the 7 authorized.(´Ñõ€úÿÿÿÿ
-mpython:S3776Ô"TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(†â¶…
 mpython:S3776Ô"TRefactor this function to reduce its Cognitive Complexity from 22 to the 15 allowed.(ûÛ´†
 rpython:S3776Á"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(Ñ¹ò¢ûÿÿÿÿ
+rpython:S3776¶"TRefactor this function to reduce its Cognitive Complexity from 25 to the 15 allowed.(…¾½’ûÿÿÿÿ
+rpython:S3776Ş"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(üí°œÿÿÿÿÿ
+Mpython:S1066‰"/Merge this if statement with the enclosing one.(•øù™ÿÿÿÿÿ
+mpython:S3776Ô"TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(†â¶…
+epython:S107¶"HMethod "fit" has 19 parameters, which is greater than the 13 authorized.(…¾½’ûÿÿÿÿ
+rpython:S3776â	"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(­Øåùÿÿÿÿ
+Gpython:S1066›"/Merge this if statement with the enclosing one.(š¼€

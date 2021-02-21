@@ -44,3 +44,14 @@ s
 Cvenv/Lib/site-packages/tensorflow/python/keras/layers/embeddings.py,6\4\64e9ae0d6a0d9391aadf072aadf58e85a495187d
 A
 sup4/new_model.py,5\c\5c826c9cb0507a1795fa044f7ce950509486e61d
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+F
+sup2/testing_models.py,6\8\68b939cfece5938d2e468b028d8904d08e5e116e
+G
+sup3/generating_data.py,f\c\fc6a46cadbc11dc76232bfc27fc6aa1d90722fde
+>
+sup2/notes.txt,0\1\015dafd8cd166f5275029171525b03c1fd5b3d39
+D
+sup2/choose_model.py,0\8\08b682de2e22e3ca70b2141c2777763160a351c5

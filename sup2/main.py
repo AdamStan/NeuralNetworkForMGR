@@ -36,7 +36,7 @@ print(len(x_training_data))
 
 model = get_my_model_n()
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
-model.fit(x_training_data, y_train, epochs=6, batch_size=32)
+history = model.fit(x_training_data, y_train, epochs=6, batch_size=32)
 
 # easy test - my
 test = [
