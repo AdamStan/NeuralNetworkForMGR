@@ -19,7 +19,7 @@ def get_model():
 
 # get_model()
 model = get_my_model_n()
-# keras.utils.plot_model(model, to_file="model.png", show_shapes=True)
+# keras.utils.plot_model(model, to_file="model3.png", show_shapes=True)
 # model.compile - is needed before fitting
 # model.fit - to train model
 # x_train = [(1, 10, 12)]

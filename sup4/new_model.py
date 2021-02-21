@@ -46,5 +46,5 @@ def get_model():
     model_lstm.compile(optimizer='adam', loss='mean_squared_error',
                        metrics=['accuracy'])  # binary_crossentropy or mean_squared_error?
     model_lstm.summary()
-    keras.utils.plot_model(model_lstm, to_file="model.png", show_shapes=True)
+    keras.utils.plot_model(model_lstm, to_file="model4.png", show_shapes=True)
     return model_lstm

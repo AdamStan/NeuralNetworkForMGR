@@ -47,7 +47,7 @@ def get_my_model_n():
 
 # get_model()
 model = get_my_model_n()
-# keras.utils.plot_model(model, to_file="model.png", show_shapes=True)
+# keras.utils.plot_model(model, to_file="model3.png", show_shapes=True)
 # model.compile - is needed before fitting
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 # model.fit - to train model
