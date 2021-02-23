@@ -1,18 +1,12 @@
 
-lpython:S3776ù"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(ôçÊt
-‚python:S1871
-"dEither merge this branch with the identical one on line "1286" or change one of the implementations.(ÏãÕãúÿÿÿÿ
-mpython:S3776Ú"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(ÎÎñ˜
-ipython:S107È	"LMethod "__init__" has 10 parameters, which is greater than the 7 authorized.(ÄÁšÃşÿÿÿÿ
-ipython:S107¦"LMethod "__init__" has 10 parameters, which is greater than the 7 authorized.(ÄÁšÃşÿÿÿÿ
-ipython:S107€"LMethod "__init__" has 10 parameters, which is greater than the 7 authorized.(ÄÁšÃşÿÿÿÿ
-hpython:S107"KMethod "__init__" has 8 parameters, which is greater than the 7 authorized.(ÄÁšÃşÿÿÿÿ
-rpython:S3776«"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ø¸»Ÿıÿÿÿÿ
+rpython:S3776È	"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÄÁšÃşÿÿÿÿ
 }python:S1871
 "dEither merge this branch with the identical one on line "1289" or change one of the implementations.(¡­‰
-upython:S107J"YFunction "configure_callbacks" has 10 parameters, which is greater than the 7 authorized.(‘•óôùÿÿÿÿ
-tpython:S107ˆ"\Function "set_callback_parameters" has 9 parameters, which is greater than the 7 authorized.(ÄÓ¢Ï
+rpython:S3776«"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ø¸»Ÿıÿÿÿÿ
+mpython:S3776Ú"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(ÎÎñ˜
+lpython:S3776ù"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(ôçÊt
 mpython:S3776Ó
 "TRefactor this function to reduce its Cognitive Complexity from 43 to the 15 allowed.(£ßÀœ
-rpython:S3776È	"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(ÄÁšÃşÿÿÿÿ
-hpython:S107¯"KMethod "__init__" has 8 parameters, which is greater than the 7 authorized.(ÄÁšÃşÿÿÿÿ
+‚python:S1871
+"dEither merge this branch with the identical one on line "1286" or change one of the implementations.(ÏãÕãúÿÿÿÿ
+gpython:S5799´"GMerge these implicitly concatenated strings; or did you forget a comma?(İ•×ƒ8€„¬Ÿü.
