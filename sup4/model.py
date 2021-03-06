@@ -7,19 +7,9 @@ from keras.models import Model, Sequential
 
 def get_model():
     sequence_length = 55 * 3
-    input_plan = Input(shape=(sequence_length))
-    input_room = Input(shape=(sequence_length))
-    input_teacher = Input(shape=(sequence_length))
-    # input should be in one dimmension for lstm
-    # units is for output space
-    # model_lstm.add(LSTM(units=55, return_sequences=True, input_shape=(55,3)))
-    # to avoid over train our network we have to turn off 20% our neurons 
-    # model_lstm.add(Dropout(0.2))
-    
-    # model_lstm.add(LSTM(units=55, return_sequences=True))
-    # model_lstm.add(LSTM(units=55, return_sequences=True))
-
-    # model_lstm.add(Dense(units=55, activation='softmax'))
+    input_plan = Input(shape=sequence_length)
+    input_room = Input(shape=sequence_length)
+    input_teacher = Input(shape=sequence_length)
 
     # Return states in addition to output
     output, state_h, state_c = LSTM(8, return_state=True, name="plan_hours")(
