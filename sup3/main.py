@@ -11,8 +11,8 @@ my_model = get_advance_model()
 my_model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
 # creating training data
-x_full_data1 = create_finite_amount_of_data(8, 19, [1, 2, 3, 4, 5], 2, 3)
-x_full_data1 += create_finite_amount_of_data(8, 19, [1, 2, 3, 4, 5], 1, 3)
+x_full_data1 = create_finite_amount_of_data(8, 19, [1, 2, 3, 4, 5], 2, 4)
+x_full_data1 += create_finite_amount_of_data(8, 19, [1, 2, 3, 4, 5], 1, 4)
 x_full_data1 = prepare_x_train_data(x_full_data1)
 x_training_data = x_full_data1
 

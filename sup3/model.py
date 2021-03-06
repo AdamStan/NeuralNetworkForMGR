@@ -29,7 +29,8 @@ def get_advance_model():
     
     combined_first = concatenate([branch_plan.output, branch_teacher.output,])
     combined_second = concatenate([combined_first, branch_room.output])
-    output = Dense(55, activation='softmax')(combined_second)
+    layer_after_concat = Dense(165, activation="relu")(combined_second)
+    output = Dense(55, activation='softmax')(layer_after_concat)
 
     model = Model(inputs=[input_plan, input_teacher, input_room], outputs=output)
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
