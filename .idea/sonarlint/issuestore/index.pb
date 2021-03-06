@@ -57,3 +57,5 @@ D
 sup2/choose_model.py,0\8\08b682de2e22e3ca70b2141c2777763160a351c5
 U
 %sup2/create_png_for_selected_model.py,4\3\43008d9fd24aa69f7b3cdd9c253a71e15a593497
+O
+sup2/test_with_loading_model.py,5\9\598fe0a0b10a3da5ae0ca064144324d25cc31502

@@ -5,9 +5,9 @@ from keras.models import Model, Sequential
 
 
 def get_advance_model():
-    input_plan = Input(shape=165)
-    input_room = Input(shape=165)
-    input_teacher = Input(shape=165)
+    input_plan = Input(shape=(None, 165))
+    input_room = Input(shape=(None, 165))
+    input_teacher = Input(shape=(None, 165))
 
     branch_plan = Sequential() 
     branch_plan.add(input_plan)

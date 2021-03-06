@@ -3,7 +3,7 @@ import itertools
 def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []
     for d in days:
-        for h in range(min_hour, max_hour, how_long):
+        for h in range(min_hour, max_hour):
             available_data.append([d, h, h + how_long])
     return available_data
 
@@ -18,9 +18,10 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
         for tup_data in data_from_iteration:
-            all_data.append(tup_data[0])
-            all_data.append(tup_data[1])
-            all_data.append(tup_data[2])
+            all_data.append([])
+            for three in tup_data:
+                for num in three:
+                    all_data[-1].append(num)
         data_from_iteration = None
     # small possibilities
     for i in range(2,max_depth):
@@ -28,9 +29,10 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
         for tup_data in data_from_iteration:
-            all_data.append(tup_data[0])
-            all_data.append(tup_data[1])
-            all_data.append(tup_data[2])
+            all_data.append([])
+            for three in tup_data:
+                for num in three:
+                    all_data[-1].append(num)
         data_from_iteration = None
     return all_data
 
@@ -65,3 +67,30 @@ def create_for_1_hour(max_depth = 5):
             row = row.replace("[", "").replace("]","").replace("(", "").replace(")", "")
             the_file.write(row)
             the_file.write("\n")
+
+def create_3input_available_hours(plan_hours, which_hour_taken, hours_to_delete=3):
+    """
+    It will randomly remove some hours, without hour which should be taken
+    :param plan_hours:
+    :param which_hour_taken:
+    :param hours_to_delete:
+    :return:
+    """
+    hour_to_take = [plan_hours[which_hour_taken * 3], plan_hours[which_hour_taken*3 + 1],
+                   plan_hours[which_hour_taken * 3 + 2]]
+    teachers_hours = []
+    room_hours = []
+    # ilosc zer przez 3?
+    # last av_hour
+    av_hours_in_plan = get_available_hours(plan_hours)
+
+    # wylosuj hours_to_delete razy godzinki do usuniecia, ale tak zeby zostala godzina do wybrania
+
+    # to trzeba zrobic dla teachera i dla rooma
+
+    # zwrocenie 3 list
+    return plan_hours, plan_hours, plan_hours
+
+def get_available_hours(av_hours):
+    # print(av_hours)
+    return 0

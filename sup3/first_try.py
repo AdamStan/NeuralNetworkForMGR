@@ -27,12 +27,28 @@ x_learn3 = [
 ]
 
 
-x_learn = prepare_x_train_data(x_learn)
-x_learn2 = prepare_x_train_data(x_learn2)
-x_learn3 = prepare_x_train_data(x_learn3)
-y_learn = [
-    np.array([1])
+x_learn = [
+    np.array(prepare_x_train_data(x_learn)),
+    np.array(prepare_x_train_data(x_learn)),
 ]
 
+x_learn2 = [
+    np.array(prepare_x_train_data(x_learn2)),
+    np.array(prepare_x_train_data(x_learn2)),
+]
+x_learn3 = [
+    np.array(prepare_x_train_data(x_learn3)),
+    np.array(prepare_x_train_data(x_learn3)),
+]
+y_learn = [
+    np.array([1]),
+    np.array([1])
+]
+y_learn = prepare_y_train_data(y_learn)
 
-my_model.fit([x_learn, x_learn2, x_learn3], prepare_y_train_data(y_learn), epochs=6)
+x_learn = np.array(x_learn).reshape(1, 2, 165)
+x_learn2 = np.array(x_learn2).reshape(1, 2, 165)
+x_learn3 = np.array(x_learn3).reshape(1, 2, 165)
+y_learn = np.array(y_learn).reshape(1, 2, 55)
+
+my_model.fit([x_learn, x_learn2, x_learn3], y_learn, epochs=6)
