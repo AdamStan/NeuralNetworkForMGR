@@ -39,7 +39,16 @@ for index in range(len(x_training_data)):
     x_learn2.append(x2_sample)
     x_learn3.append(x3_sample)
 
-my_model.fit([x_learn, x_learn2, x_learn3], y_train, epochs=6)
+print(np.array(x_learn).shape)
+print(np.array(y_train).shape)
+
+x_learn = np.array(x_learn).reshape(len(x_learn), 165)
+x_learn2 = np.array(x_learn2).reshape(len(x_learn2), 165)
+x_learn3 = np.array(x_learn3).reshape(len(x_learn3), 165)
+# y_train = np.array(y_train).reshape(1, len(y_train), 55)
+
+
+my_model.fit([x_learn, x_learn2, x_learn3], y_train, epochs=6, batch_size=6)
 my_model.save("model-first.h5")
 
 
