@@ -6,7 +6,7 @@ from keras.models import Model, Sequential
 
 def get_model():
     sequence_length = 55*3
-    dictionary_size = 24 # from 0 to 23
+    dictionary_size = 24 # from 1 to 24
     input_plan = layers.Input(shape=(sequence_length,), name="plan_av_hours")
     input_room = layers.Input(shape=(sequence_length,), name="room_av_hours")
     input_teacher = layers.Input(shape=(sequence_length,), name="teacher_av_hours")

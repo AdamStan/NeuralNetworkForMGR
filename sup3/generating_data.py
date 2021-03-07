@@ -1,3 +1,4 @@
+import random
 import itertools
 
 def create_all_available_hours(min_hour, max_hour, days, how_long):
@@ -68,29 +69,46 @@ def create_for_1_hour(max_depth = 5):
             the_file.write(row)
             the_file.write("\n")
 
-def create_3input_available_hours(plan_hours, which_hour_taken, hours_to_delete=3):
+def create_3input_available_hours(plan_hours, hours_to_delete=6):
     """
     It will randomly remove some hours, without hour which should be taken
     :param plan_hours:
-    :param which_hour_taken:
     :param hours_to_delete:
     :return:
     """
-    hour_to_take = [plan_hours[which_hour_taken * 3], plan_hours[which_hour_taken*3 + 1],
-                   plan_hours[which_hour_taken * 3 + 2]]
-    teachers_hours = []
-    room_hours = []
+    teachers_hours = plan_hours.copy()
+    room_hours = plan_hours.copy()
     # ilosc zer przez 3?
     # last av_hour
     av_hours_in_plan = get_available_hours(plan_hours)
 
     # wylosuj hours_to_delete razy godzinki do usuniecia, ale tak zeby zostala godzina do wybrania
-
-    # to trzeba zrobic dla teachera i dla rooma
+    remove_data(teachers_hours, hours_to_delete, av_hours_in_plan)
+    remove_data(room_hours, hours_to_delete, av_hours_in_plan)
 
     # zwrocenie 3 list
-    return plan_hours, plan_hours, plan_hours
+    return plan_hours, teachers_hours, room_hours
 
 def get_available_hours(av_hours):
-    # print(av_hours)
-    return 0
+    av_hours_number = 0
+    for index in range(0, len(av_hours), 3):
+        if av_hours[index] != 0:
+            av_hours_number += 1
+    return av_hours_number
+
+def remove_data(hours_data, hours_to_delete, av_hours_in_plan):
+    hours_deleted = []
+    av_indexes = [i for i in range(0, av_hours_in_plan)]
+    for _ in range(hours_to_delete):
+        remove_index = -1
+        while (av_hours_in_plan - len(hours_deleted)) > 2:
+            remove_index = random.choice(av_indexes)
+            if remove_index not in hours_deleted:
+                break
+
+        if remove_index == -1:
+            break
+        hours_data[remove_index * 3] = 0
+        hours_data[remove_index * 3 + 1] = 0
+        hours_data[remove_index * 3 + 2] = 0
+        hours_deleted.append(remove_index)
