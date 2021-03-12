@@ -14,18 +14,7 @@ def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth =
     max_iteration = len(available_data) - max_depth
     print("Max iteration: " + str(max_iteration))
     # big possibilities
-    for i in range(len(available_data), max_iteration, -1):
-        print("iteration:" + str(i))
-        data_from_iteration = list(itertools.combinations(available_data, i))
-        print(len(data_from_iteration))
-        for tup_data in data_from_iteration:
-            all_data.append([])
-            for three in tup_data:
-                for num in three:
-                    all_data[-1].append(num)
-        data_from_iteration = None
-    # small possibilities
-    for i in range(2,max_depth):
+    for i in range(2, max_depth):
         print("iteration: " + str(i))
         data_from_iteration = list(itertools.combinations(available_data, i))
         print(len(data_from_iteration))
@@ -69,25 +58,24 @@ def create_for_1_hour(max_depth = 5):
             the_file.write(row)
             the_file.write("\n")
 
-def create_3input_available_hours(plan_hours, hours_to_delete=6):
+def create_3input_available_hours(av_hours_from_plan, plan_to_manipulate, hours_to_delete=3):
     """
     It will randomly remove some hours, without hour which should be taken
     :param plan_hours:
     :param hours_to_delete:
     :return:
     """
-    teachers_hours = plan_hours.copy()
-    room_hours = plan_hours.copy()
-    # ilosc zer przez 3?
-    # last av_hour
-    av_hours_in_plan = get_available_hours(plan_hours)
+    if len(av_hours_from_plan) != 165:
+        raise Exception("av_hours_from_plan should be flat and have 165 length");
+
+    new_plan_to_manipulate = repair_plan_to_manipulate(av_hours_from_plan, plan_to_manipulate)
+    teachers_hours = new_plan_to_manipulate
+    room_hours = new_plan_to_manipulate.copy()
 
     # wylosuj hours_to_delete razy godzinki do usuniecia, ale tak zeby zostala godzina do wybrania
-    remove_data(teachers_hours, hours_to_delete, av_hours_in_plan)
-    remove_data(room_hours, hours_to_delete, av_hours_in_plan)
 
     # zwrocenie 3 list
-    return plan_hours, teachers_hours, room_hours
+    return av_hours_from_plan.copy(), teachers_hours, room_hours
 
 def get_available_hours(av_hours):
     av_hours_number = 0
@@ -112,3 +100,31 @@ def remove_data(hours_data, hours_to_delete, av_hours_in_plan):
         hours_data[remove_index * 3 + 1] = 0
         hours_data[remove_index * 3 + 2] = 0
         hours_deleted.append(remove_index)
+
+def repair_plan_to_manipulate(all_possibilities, plan_to_manipulate):
+    # av_hours_from_plan - contains all 55 possibilities:
+    # [ 1, 8, 10, 1, 9, 11, ... , 5, 18, 20 ]
+    # plan_to_manipulate contains not ordered:\
+    # [ 1, 9, 11, 4, 8, 10, ... ]
+    # get plan_to_manipulate in form:
+    # [ 0, 0, 0, 1, 9, 11, 0, 0, 0, ..., 4, 8, 10, ... ]
+    ptm_index = 0
+    new_plan_to_manipulate = []
+    for i in range(0, len(all_possibilities), 3):
+        if all_possibilities[i] == plan_to_manipulate[ptm_index] and \
+                all_possibilities[i + 1] == plan_to_manipulate[ptm_index + 1] and \
+                all_possibilities[i + 2] == plan_to_manipulate[ptm_index + 2]:
+            new_plan_to_manipulate.append(plan_to_manipulate[ptm_index])
+            new_plan_to_manipulate.append(plan_to_manipulate[ptm_index + 1])
+            new_plan_to_manipulate.append(plan_to_manipulate[ptm_index + 2])
+            ptm_index += 3
+            if ptm_index >= len(plan_to_manipulate):
+                break
+        else:
+            new_plan_to_manipulate.append(0)
+            new_plan_to_manipulate.append(0)
+            new_plan_to_manipulate.append(0)
+    # print("data to manipulate")
+    # print(len(new_plan_to_manipulate))
+    # print(new_plan_to_manipulate)
+    return new_plan_to_manipulate

@@ -11,10 +11,10 @@ def get_model():
     input_room = layers.Input(shape=(sequence_length,), name="room_av_hours")
     input_teacher = layers.Input(shape=(sequence_length,), name="teacher_av_hours")
 
-    plan_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=64,)(
+    plan_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=55,)(
         input_plan
     )
-    output, state_h, state_c = LSTM(64, return_state=True, name="plan_hours")(
+    output, state_h, state_c = LSTM(55, return_state=True, name="plan_hours")(
         plan_embedded
     )
     plan_state = [state_h, state_c]
@@ -22,17 +22,17 @@ def get_model():
 
     # Pass the 2 states to a new LSTM layer, as initial state
     # print(input_teacher)
-    teacher_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=64)(
+    teacher_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=55)(
         input_teacher
     )
-    teacher_output = LSTM(64, name="teacher_hours")(
+    teacher_output = LSTM(55, name="teacher_hours")(
         teacher_embedded, initial_state=plan_state
     )
 
-    room_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=64)(
+    room_embedded = layers.Embedding(input_dim=dictionary_size, output_dim=55)(
         input_room
     )
-    room_output = LSTM(64, name="room_hours")(
+    room_output = LSTM(55, name="room_hours")(
         room_embedded, initial_state=plan_state
     )
 

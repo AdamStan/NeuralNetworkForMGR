@@ -33,8 +33,6 @@ D
 sup3/main.py,9\8\981e53f4198e6772998cf38df3e1d42bf9e39019
 <
 sup2/main.py,3\2\329f60607c6d77c2d12bf546634e2f045f97d03f
-=
-sup4/model.py,a\5\a5d6df1254f330c80f32d809daec925d16d6b26d
 <
 sup4/main.py,2\b\2be06f6cc564a2389068cbeea083c885397bf187
 s
@@ -60,3 +58,15 @@ O
 sup3/helpers.py,e\3\e3e282c76e3b5600bb048841bed1c8db50da677c
 A
 sup3/first_try.py,a\0\a02bf29df3035f4df2651783c7189dc394293f9d
+x
+Hvenv/Lib/site-packages/tensorflow/python/keras/preprocessing/sequence.py,0\1\01e9513bcc58c816af36c09d4edb97dcfcf6fb72
+f
+6venv/Lib/site-packages/keras_preprocessing/sequence.py,d\a\da5acf686be19a63e4934db0d634b08d0615985a
+F
+sup4/first_try_sup4.py,f\2\f2c9d84913ba2366f29f67445078a8484edfa7d6
+?
+sup4/helpers.py,0\f\0f7b358e28b9707aaf5f43a1abc4ef972332bc9b
+G
+sup4/generating_data.py,b\e\beeeaaba774239771c2b48b50ee81d5286f775e1
+@
+sup3/new_main.py,f\0\f05f0dec84c7d14a63df8c0194f2b96ada5f9d22
