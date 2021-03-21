@@ -19,15 +19,10 @@ y_train = []
 for index in range(len(x_training_data)):
     y_train.append([1])
 y_train = prepare_y_train_data(y_train)
-# creating y-test data
-y_test = []
-for index in range(len(x_training_data)):
-    y_test.append([1])
-y_test = prepare_y_train_data(y_test)
 
 # mixing data
 for index in range(len(x_training_data)):
-    new_index = index % 55
+    new_index = index % 12
     swap_positions(x_training_data[index], 0, new_index)
     swap_positions(y_train[index], 0, new_index)
 print("mixing finish")
