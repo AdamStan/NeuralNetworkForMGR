@@ -9,8 +9,8 @@ def prepare_x_train_data(x_train):
 
 def prepare_y_train_data(y_train):
     new_data = []
-    for propabilities in y_train:
-        for _ in range(len(propabilities), 55):
-            propabilities.append(0)
-        new_data.append(propabilities)
+    for probabilities in y_train:
+        for _ in range(len(probabilities), 55):
+            probabilities.append(0)
+        new_data.append(probabilities)
     return new_data

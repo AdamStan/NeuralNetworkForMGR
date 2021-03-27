@@ -1,5 +1,5 @@
 from prepare_data import prepare_y_train_data, prepare_x_train_data
-from generating_x_data import create_finite_amount_of_data, create_finite_amount_from_mid
+from generating_x_data import create_finite_amount_of_data, create_finite_amount_from_mid, get_available_hours
 from model import get_my_model_n
 from helpers import swap_positions
 
@@ -17,7 +17,7 @@ y_train = prepare_y_train_data(y_train)
 
 # mixing data
 for index in range(len(x_training_data)):
-    new_index = index % 12
+    new_index = index % get_available_hours(x_training_data[index])
     swap_positions(x_training_data[index], 0, new_index)
     swap_positions(y_train[index], 0, new_index)
 print("mixing finish")
