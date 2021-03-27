@@ -18,6 +18,7 @@ y_train = prepare_y_train_data(y_train)
 # mixing data
 for index in range(len(x_training_data)):
     new_index = index % get_available_hours(x_training_data[index])
+    print(get_available_hours(x_training_data[index]))
     swap_positions(x_training_data[index], 0, new_index)
     swap_positions(y_train[index], 0, new_index)
 print("mixing finish")

@@ -5,7 +5,7 @@ import random
 def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []
     for d in days:
-        for h in range(min_hour, max_hour):
+        for h in range(min_hour, max_hour, how_long):
             available_data.append([d, h, h + how_long])
     return available_data
 
@@ -70,7 +70,7 @@ def create_for_1_hour(max_depth = 5):
 def get_available_hours(av_hours):
     av_hours_number = 0
     for index in range(0, len(av_hours)):
-        if av_hours[index] != 0:
+        if av_hours[index][0] != 0:
             av_hours_number += 1
     return av_hours_number
 

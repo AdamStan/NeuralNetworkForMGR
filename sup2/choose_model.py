@@ -4,7 +4,8 @@ from model import get_my_model_with_parameters
 from helpers import swap_positions
 
 # creating training data
-x_full_data = create_finite_amount_of_data(8, 19, [1, 2, 3, 4, 5], 2, 5)
+x_full_data = create_finite_amount_of_data(8, 19, [1, 2,3,4,5], 2, 6)
+x_full_data += create_finite_amount_of_data(8, 19, [1,2,3,4,5], 1, 4)
 x_full_data = prepare_x_train_data(x_full_data)
 x_training_data = x_full_data
 # creating y-train data
@@ -15,7 +16,7 @@ y_train = prepare_y_train_data(y_train)
 
 # creating test data
 print("Test data from...")
-x_test_data = create_finite_amount_from_mid(8, 19, [1, 2, 3, 4, 5], 2, 5)
+x_test_data = create_finite_amount_from_mid(8, 19, [1, 2, 3, 4, 5], 2, 6)
 x_test_data = prepare_x_train_data(x_test_data)
 y_test = []
 for i in range(len(x_test_data)):
