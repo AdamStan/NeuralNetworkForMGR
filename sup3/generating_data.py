@@ -6,9 +6,17 @@ def create_all_available_hours(min_hour, max_hour, days, how_long):
     available_data = []
     for d in days:
         # The size of step is a mistake, but give best results
-        for h in range(min_hour, max_hour, how_long):
+        for h in range(min_hour, max_hour):
             available_data.append([d, h, h + how_long])
     return available_data
+
+
+def make_flat(list_av_hours):
+    flat = list()
+    for list_on_list in list_av_hours:
+        for num in list_on_list:
+            flat.append(num)
+    return flat
 
 
 def create_finite_amount_of_data(min_hour, max_hour, days, how_long, max_depth=5):
@@ -52,7 +60,7 @@ def create_finite_amount_from_mid(min_hour, max_hour, days, how_long, it):
     return all_data
 
 
-def create_input_available_hours_for_teacher_and_room(av_hours_from_plan):
+def create_2inputs(av_hours_from_plan):
     """
     It will randomly remove some hours, without hour which should be taken
     :param av_hours_from_plan:
