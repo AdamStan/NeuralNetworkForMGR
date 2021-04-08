@@ -60,7 +60,7 @@ def create_finite_amount_from_mid(min_hour, max_hour, days, how_long, it):
     return all_data
 
 
-def create_2inputs(av_hours_from_plan):
+def create_2inputs(av_hours_from_plan, plan_to_manipulate):
     """
     It will randomly remove some hours, without hour which should be taken
     :param av_hours_from_plan:
@@ -69,8 +69,9 @@ def create_2inputs(av_hours_from_plan):
     if len(av_hours_from_plan) != 165:
         raise Exception("av_hours_from_plan should be flat and have 165 length");
 
-    teachers_hours = av_hours_from_plan.copy()
-    room_hours = av_hours_from_plan.copy()
+    new_plan_to_manipulate = repair_plan_to_manipulate(av_hours_from_plan, plan_to_manipulate)
+    teachers_hours = new_plan_to_manipulate
+    room_hours = new_plan_to_manipulate.copy()
 
     return teachers_hours, room_hours
 
@@ -107,7 +108,7 @@ def repair_plan_to_manipulate(all_possibilities, plan_to_manipulate):
     # plan_to_manipulate contains not ordered:\
     # [ 1, 9, 11, 4, 8, 10, ... ]
     # get plan_to_manipulate in form:
-    # [ 0, 0, 0, 1, 9, 11, 0, 0, 0, ..., 4, 8, 10, ... ]
+    # [ 0, 0, 0, 1, 9, 11, 0, 0, 0, ..., 4, 8, 10, ... ]q
     ptm_index = 0
     new_plan_to_manipulate = []
     for i in range(0, len(all_possibilities), 3):

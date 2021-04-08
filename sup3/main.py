@@ -18,14 +18,13 @@ y_train = list()
 print("Creating x data for other inputs and y-train list")
 for index in range(len(x_training_data)):
     x_learn1.append(x_full_set.copy())
-    x2_sample, x3_sample = create_2inputs(x_training_data[index])
+    x2_sample, x3_sample = create_2inputs(x_learn1[-1], x_training_data[index])
     # creating y_train data
-    other_index = 0
     y_train_sample = []
     for i in range(0, len(x_learn1[index]), 3):
-        if x_learn1[index][i] == x2_sample[other_index] and x_learn1[index][i] == x3_sample[other_index] and \
-                x_learn1[index][i + 1] == x2_sample[other_index + 1] and x_learn1[index][i + 1] == x3_sample[other_index + 1] and \
-                x_learn1[index][i + 2] == x2_sample[other_index + 2] and x_learn1[index][i + 2] == x3_sample[other_index + 2]:
+        if x_learn1[index][i] == x2_sample[i] and x_learn1[index][i] == x3_sample[i] and \
+                x_learn1[index][i + 1] == x2_sample[i + 1] and x_learn1[index][i + 1] == x3_sample[i + 1] and \
+                x_learn1[index][i + 2] == x2_sample[i + 2] and x_learn1[index][i + 2] == x3_sample[i + 2]:
             y_train_sample.append(1)
             break
         else:
