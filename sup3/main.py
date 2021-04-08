@@ -1,7 +1,8 @@
 import numpy as np
 from model import get_advance_model
 
-from generating_data import create_finite_amount_of_data, create_2inputs, create_all_available_hours, make_flat
+from generating_data import create_finite_amount_of_data, create_2inputs, create_all_available_hours, make_flat, \
+    repair_plan_to_manipulate
 from prepare_data import prepare_x_train_data, prepare_y_train_data
 
 my_model = get_advance_model()
@@ -29,27 +30,53 @@ for index in range(len(x_training_data)):
             break
         else:
             y_train_sample.append(0)
-    print(y_train_sample)
     y_train.append(y_train_sample)
     x_learn2.append(x2_sample)
     x_learn3.append(x3_sample)
 
-print("data are ready!")
-not_valid = 0
-for index in range(len(y_train)):
-    ok = False
-    for y_v in y_train[index]:
-        if y_v == 1:
-            ok = True
-            break
-    if not ok:
-        print("Not valid sample:")
-        print(y_train[index])
-        print(index)
-        not_valid += 1
-print(not_valid)
+### TERAZ WAZNE
+### ADAM, SKUP SIE
+### ROBISZ TAK, ze full jest po stronie inputa2 i 3
+### a po stronie inputa 1 te smieszne rzeczy
+### trzeba zmienic sposob robienenia y-train zbioru
+# x_learn1_next, x_learn2_next, x_learn3_next = list(), list(), list()
+# for index in range(len(x_training_data)):
+#     x_learn1_next.append(repair_plan_to_manipulate(x_full_set, x_training_data[index]))
+#     x2_sample, x3_sample = x_full_set.copy(), x_full_set.copy()
+#     # creating y_train data
+#     y_train_sample = []
+#     for i in range(0, len(x_learn1_next[index]), 3):
+#         if x_learn1_next[index][i] == x2_sample[i] and x_learn1_next[index][i] == x3_sample[i] and \
+#                 x_learn1_next[index][i + 1] == x2_sample[i + 1] and x_learn1_next[index][i + 1] == x3_sample[i + 1] and \
+#                 x_learn1_next[index][i + 2] == x2_sample[i + 2] and x_learn1_next[index][i + 2] == x3_sample[i + 2]:
+#             y_train_sample.append(1)
+#             break
+#         else:
+#             y_train_sample.append(0)
+#     # print(y_train_sample)
+#     y_train.append(y_train_sample)
+#     x_learn2_next.append(x2_sample)
+#     x_learn3_next.append(x3_sample)
+
+# print("data are ready!")
+# not_valid = 0
+# for index in range(len(y_train)):
+#     ok = False
+#     for y_v in y_train[index]:
+#         if y_v == 1:
+#             ok = True
+#             break
+#     if not ok:
+#         print("Not valid sample:")
+#         print(y_train[index])
+#         print(index)
+#         not_valid += 1
+# print(not_valid)
 
 y_train = prepare_y_train_data(y_train)
+# x_learn1 += x_learn1_next
+# x_learn2 += x_learn2_next
+# x_learn3 += x_learn3_next
 x_learn1 = prepare_x_train_data(x_learn1)
 x_learn2 = prepare_x_train_data(x_learn2)
 x_learn3 = prepare_x_train_data(x_learn3)
